@@ -1,0 +1,7 @@
+package test;
+struct test {
+        double field;
+        int64_t field2;
+        int64_t field3[4];
+        int8_t  t;
+}
