@@ -2,8 +2,5 @@
 
 #include <iostream>
 namespace lcmutils {
-    void hello() {
-        std::cout << "Hello, World!" << std::endl;
-    }
-
+    AbstractNode::AbstractNode(const std::string &name_) : name_(name_) {}
 }

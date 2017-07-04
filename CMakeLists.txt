@@ -7,7 +7,7 @@ set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/build)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/lib)
 
-set(SOURCE_FILES src/lcm_utils/AbstractNode.cpp include/lcm_utils/AbstractNode.h src/lcm_utils/AbstractSubscription.cpp include/lcm_utils/AbstractSubscription.h include/lcm_utils/CallbackBase.hpp include/lcm_utils/Subscription.hpp)
+set(SOURCE_FILES src/lcm_utils/AbstractNode.cpp include/lcm_utils/AbstractNode.h include/lcm_utils/Subscription.hpp include/lcm_utils/CallbackBase.hpp src/lcm_utils/SimpleNode.cpp include/lcm_utils/SimpleNode.h)
 include_directories(include)
 
 find_package(PkgConfig REQUIRED)

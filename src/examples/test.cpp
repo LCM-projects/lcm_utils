@@ -4,31 +4,33 @@
 
 #include <iostream>
 #include "lcm/lcm-cpp.hpp"
-#include "poll.h"
 #include "lcm_utils/Subscription.hpp"
 #include "msg/test/test.hpp"
+#include "lcm_utils/SimpleNode.h"
+#include "TimeHelpers.hpp"
+
 
 int main(int argc, char** argv){
 
-    lcmutils::Subscription<test::test> s("test");
-    s.init();
+    lcmutils::SimpleNode node("test_node");
+    lcmutils::SubscriptionBase* sub = node.addSubscription<test::test>("test");
+    lcmutils::SubscriptionBase* sub2 = node.addSubscription<test::test>("test2");
 
-    while (0==s.getHandler()->handle()){
+    node.pollSubscriptions();
+
+    Spinner sp(2);
+    while (sp.ok()){
+
+        node.pollSubscriptions();
+
+        if (sub->updated()){
+            // be aware, sub must be updated in order to getData, no control is done
+            test::test rec  = sub->getData<test::test>();
+            std::cout << rec.field3[2] << std::endl;
+        }
 
 
 
     }
 
-    /*
-    while (0==s.handler_.handle()) {
-        s.pollMe();
-
-        test::test t;
-
-
-
-
-        std::cout << t.field << std::endl;
-    }
-     */
 }

@@ -20,7 +20,7 @@ namespace lcmutils {
             data_ = *msg;
         }
 
-        T getData() {
+        const T& getData() const{
             return data_;
         }
     };
